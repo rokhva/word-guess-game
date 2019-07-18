@@ -24,11 +24,12 @@
 var words = ["black", "chai", "green", "matcha", "sencha", "oolong", "puerh", "white", "herbal", "yellow", "fermented", "rooibos", "hibiscus", "earlgrey"]
 
 var guessedLetters = [];
-var chosenWord = [];
-var guesses = 10;
+var chosenWord = "";
 var guessesRemaining = 0;
 var wins = 0;
 var losses = 0;
+var chosenWordHidden = [];
+var characters;
 
 // var guesses = chosenWord.length + 5;
 
@@ -36,15 +37,18 @@ var losses = 0;
 function setup() {
     chosenWord = words[Math.floor(Math.random() * words.length - 1) + 1];
     console.log(chosenWord);
+    characters = chosenWord.split("");
+
     
-    var randomWord = [];
-    for (var i = 0; i < randomWord.length; i++) {
-        randomWord[i] = "_";
+    for (var i = 0; i < chosenWord.length; i++) {
+        chosenWordHidden[i] = "_";
+        //chosenWordHidden.push("_")
     }
     
     //sets guesses and guessed letters to 0
     guessedLetters = [];
-    guesses = guessesRemaining;
+    guessesRemaining = 10;
+
     
     //show on screen
     updateScreen();
@@ -54,17 +58,25 @@ function setup() {
 //to keep track of how many letters are left to be guessed
 // var remainingLetters = chosenWord.length;
 
+setup();
 
 document.onkeyup = function (event) {
-    setup();
     
     var userGuess = event.key;
     console.log(userGuess);
 
+    checkLetter(userGuess)
+
+    
+}
+
+function checkLetter(userGuess){
+
     if (userGuess) {
         for (var j = 0; j < chosenWord.length; j++) {
             console.log(j);
-            if (chosenWord[j] === event.key) {
+            
+            if (characters[j] === userGuess) {
                 console.log(chosenWord[j]);
                 // return;
                 
@@ -78,6 +90,15 @@ document.onkeyup = function (event) {
     }
 }
 
+// var newNumber = 0;
+
+// function addTwo(num){
+//     //if(typeof(num) === "number")
+//     console.log(num + 2);
+//     newNumber = num + 2
+// }
+
+//var newNumber = addTwo(3)
 
 
 
@@ -88,7 +109,7 @@ function updateScreen() {
     document.getElementById("numWins").innerHTML = wins;
     document.getElementById("numLosses").innerHTML = losses;
     document.getElementById("numLives").innerHTML = guessesRemaining;
-    document.getElementById("chosenWord").innerHTML = chosenWord.join("");
+    document.getElementById("chosenWordHidden").innerHTML = chosenWordHidden.join(" ");
 }
 
 
