@@ -29,7 +29,6 @@ var guesses = 10;
 var guessesRemaining = 0;
 var wins = 0;
 var losses = 0;
-var setUp = setup();
 
 // var guesses = chosenWord.length + 5;
 
@@ -37,19 +36,19 @@ var setUp = setup();
 function setup() {
     chosenWord = words[Math.floor(Math.random() * words.length - 1) + 1];
     console.log(chosenWord);
-
-    chosenWord = [];
-    for (var i = 0; i < chosenWord.length; i++) {
-        chosenWord[i] = "_";
+    
+    var randomWord = [];
+    for (var i = 0; i < randomWord.length; i++) {
+        randomWord[i] = "_";
     }
-
+    
     //sets guesses and guessed letters to 0
     guessedLetters = [];
     guesses = guessesRemaining;
-
+    
     //show on screen
     updateScreen();
-
+    
 };
 
 //to keep track of how many letters are left to be guessed
@@ -57,7 +56,8 @@ function setup() {
 
 
 document.onkeyup = function (event) {
-
+    setup();
+    
     var userGuess = event.key;
     console.log(userGuess);
 
