@@ -29,7 +29,7 @@ var guessesRemaining = 0;
 var wins = 0;
 var losses = 0;
 var chosenWordHidden = [];
-var characters;
+var characters = [];
 
 // var guesses = chosenWord.length + 5;
 
@@ -41,8 +41,8 @@ function setup() {
 
     
     for (var i = 0; i < chosenWord.length; i++) {
-        chosenWordHidden[i] = "_";
-        //chosenWordHidden.push("_")
+        // chosenWordHidden[i] = "_";
+        chosenWordHidden.push("_")
     }
     
     //sets guesses and guessed letters to 0
@@ -73,22 +73,24 @@ document.onkeyup = function (event) {
 function checkLetter(userGuess){
 
     if (userGuess) {
-        for (var j = 0; j < chosenWord.length; j++) {
+        for (var j = 0; j < charachters.length; j++) {
             console.log(j);
             
             if (characters[j] === userGuess) {
-                console.log(chosenWord[j]);
-                // return;
+                console.log(characters[j]);
+                
                 
             } 
-            // else if (chosenWord[j] !== event.key) {
+        
+        }
+    }
+}
+
+    // else if (chosenWord[j] !== event.key) {
             //     guesses--;
             //     guessedLetters.join("");
                 
             // }
-        }
-    }
-}
 
 // var newNumber = 0;
 
@@ -99,6 +101,8 @@ function checkLetter(userGuess){
 // }
 
 //var newNumber = addTwo(3)
+
+
 
 
 
