@@ -15,13 +15,13 @@
 
 h2{
     font-family: 'Raleway', sans-serif;
-    font-weight: 200;
+    font-weight: 400;
     text-align: center;
     font-size: 10pt;
     text-transform: uppercase;
     letter-spacing: 2pt;
     border-bottom: 3px solid black;
-    padding-bottom: 16px;
+    padding-bottom: 7px;
 }
 
 .container{
@@ -30,7 +30,6 @@ h2{
 
 .score{
     display: flex;
-    /* border: solid 2px salmon; */
     width: 100%;
     justify-content: space-evenly;
     padding-top: 64px;
@@ -41,13 +40,13 @@ h2{
 h3{
     font-family: 'Raleway', sans-serif;
     font-weight: 200;
-    padding-bottom: 24px;
-    font-size: 16pt;
+    padding-bottom: 16px;
+    font-size: 20pt;
 }
 
 p{
     text-align: center;
     font-family: 'Raleway', sans-serif;
     font-weight: 200;
-    font-size: 16pt;
+    font-size: 20pt;
 }

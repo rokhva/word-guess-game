@@ -39,20 +39,20 @@ function setup() {
     console.log(chosenWord);
     characters = chosenWord.split("");
 
-    
+
     for (var i = 0; i < chosenWord.length; i++) {
         // chosenWordHidden[i] = "_";
         chosenWordHidden.push("_")
     }
-    
+
     //sets guesses and guessed letters to 0
     guessedLetters = [];
     guessesRemaining = 10;
 
-    
+
     //show on screen
     updateScreen();
-    
+
 };
 
 //to keep track of how many letters are left to be guessed
@@ -60,50 +60,55 @@ function setup() {
 
 setup();
 
-document.onkeyup = function (event) {
-    
+//track the keys the user presses
+document.onkeyup = function (event) { //THIS FUNCTION IS V BROKEN
+
     var userGuess = event.key;
     console.log(userGuess);
 
-    checkLetter(userGuess)
+    checkLetter(userGuess);
 
-    
 }
+//will run everytime the user hits a key
+function checkLetter(userGuess) {
 
-function checkLetter(userGuess){
-
+    //checking to see if the letter hit is within the randomly chosen word
     if (userGuess) {
         for (var j = 0; j < charachters.length; j++) {
             console.log(j);
-            
+
+            //if it is in the word then the socre will increase by one and the letter will show up in it's correct postion in the chosenHiddenWord array
             if (characters[j] === userGuess) {
                 console.log(characters[j]);
-                
-                
-            } 
-        
+                wins++;
+                chosenWordHidden.splice();
+                updateScreen();
+
+                //if the letter guessed is not in the word, then the letter will be displayed under guesses, and the guesses remaining will decrease by one
+            } else {
+                guessedLetters.push(userGuess);
+                guessesRemaining--;
+                updateScreen();
+            }
         }
     }
 }
 
-    // else if (chosenWord[j] !== event.key) {
-            //     guesses--;
-            //     guessedLetters.join("");
-                
-            // }
+// ___________________________________POSSIBLE FUNCITONS??
 
-// var newNumber = 0;
+function lostGame() {
+    if (guessesRemaining === 0) {
+        losses++;
+        setup();
+    }
+}
 
-// function addTwo(num){
-//     //if(typeof(num) === "number")
-//     console.log(num + 2);
-//     newNumber = num + 2
-// }
-
-//var newNumber = addTwo(3)
-
-
-
+function wonGame() {
+    if (guessesRemaining > 0 || chosenWordHidden === characters) {
+        wins++;
+        setup();
+    }
+}
 
 
 
@@ -113,7 +118,7 @@ function updateScreen() {
     document.getElementById("numWins").innerHTML = wins;
     document.getElementById("numLosses").innerHTML = losses;
     document.getElementById("numLives").innerHTML = guessesRemaining;
-    document.getElementById("chosenWordHidden").innerHTML = chosenWordHidden.join(" ");
+    document.getElementById("chosenWordHidden").innerHTML = chosenWordHidden.join(" "); //this line will not work for some reason
 }
 
 
