@@ -21,12 +21,23 @@ h2{
     border: solid 2px salmon;
 }
 
+.container{
+    display: flex;
+}
+
 .score{
     display: flex;
     border: solid 2px salmon;
-    width: 50%;
+    width: 100%;
     justify-content: space-evenly;
     padding-top: 64px;
     padding-bottom: 64px;
     margin-top: 64px;
+    column-width: 3;
 }
+
+.guessedLetters{
+    border: solid 2px salmon;
+    width: 49%;
+}
+
