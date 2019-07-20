@@ -5,20 +5,23 @@
 }
 
 .title{
-    font-family: 'Permanent Marker', cursive;
-    border: solid 2px salmon;
+    font-family: 'Railway', sans-serif;
+    font-weight: bolder;
     text-align: center;
     padding-top: 64px;
     padding-bottom: 64px;
-    letter-spacing: 6pt;
+    letter-spacing: 4pt;
 }
 
 h2{
     font-family: 'Raleway', sans-serif;
     font-weight: 200;
     text-align: center;
-    font-size: 14pt;
-    border: solid 2px salmon;
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 2pt;
+    border-bottom: 3px solid black;
+    padding-bottom: 16px;
 }
 
 .container{
@@ -27,17 +30,24 @@ h2{
 
 .score{
     display: flex;
-    border: solid 2px salmon;
+    /* border: solid 2px salmon; */
     width: 100%;
     justify-content: space-evenly;
     padding-top: 64px;
     padding-bottom: 64px;
-    margin-top: 64px;
-    column-width: 3;
+    margin-top: 24px;
 }
 
-.guessedLetters{
-    border: solid 2px salmon;
-    width: 49%;
+h3{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    padding-bottom: 24px;
+    font-size: 16pt;
 }
 
+p{
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    font-size: 16pt;
+}
