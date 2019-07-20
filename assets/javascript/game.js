@@ -29,7 +29,7 @@ var guessesRemaining = 0;
 var wins = 0;
 var losses = 0;
 var chosenWordHidden = [];
-var characters = [];
+var char = [];
 
 // var guesses = chosenWord.length + 5;
 
@@ -37,13 +37,15 @@ var characters = [];
 function setup() {
     chosenWord = words[Math.floor(Math.random() * words.length - 1) + 1];
     console.log(chosenWord);
-    characters = chosenWord.split("");
+    char = chosenWord.split("");
+    console.log(char);
 
 
-    for (var i = 0; i < chosenWord.length; i++) {
+    for (var i = 0; i < char.length; i++) {
         // chosenWordHidden[i] = "_";
-        chosenWordHidden.push("_")
+        chosenWordHidden.push("_");
     }
+    console.log(chosenWordHidden);
 
     //sets guesses and guessed letters to 0
     guessedLetters = [];
@@ -51,7 +53,7 @@ function setup() {
 
 
     //show on screen
-    updateScreen();
+    // updateScreen();
 
 };
 
@@ -61,7 +63,7 @@ function setup() {
 setup();
 
 //track the keys the user presses
-document.onkeyup = function (event) { //THIS FUNCTION IS V BROKEN
+document.onkeyup = function (event) { 
 
     var userGuess = event.key;
     console.log(userGuess);
@@ -74,25 +76,39 @@ function checkLetter(userGuess) {
 
     //checking to see if the letter hit is within the randomly chosen word
     if (userGuess) {
-        for (var j = 0; j < charachters.length; j++) {
-            console.log(j);
+        for (var j = 0; j < char.length; j++) {
 
-            //if it is in the word then the socre will increase by one and the letter will show up in it's correct postion in the chosenHiddenWord array
-            if (characters[j] === userGuess) {
-                console.log(characters[j]);
-                wins++;
-                chosenWordHidden.splice();
+            if (char[j] === userGuess) {
+                //the letter will show up in it's correct postion in the chosenHiddenWord array
+                var letterReplace = userGuess;
+                // char[j] = userGuess;
+                // console.log(char[j]);
+                // var test = char.splice(char[j], 1, letterReplace);
+                // console.log(test)
+
+                chosenWordHidden.splice( j, 1, letterReplace);
+                console.log(chosenWordHidden);
+                
+                // chosenWordHidden
+                // chosenWordHidden.splice();
+                
+                
+                //if it is in the word then the score will increase by one 
+                
                 updateScreen();
 
                 //if the letter guessed is not in the word, then the letter will be displayed under guesses, and the guesses remaining will decrease by one
             } else {
+                console.log('the letter does NOT match');
                 guessedLetters.push(userGuess);
-                guessesRemaining--;
+                // guessesRemaining--;
                 updateScreen();
             }
         }
     }
 }
+
+console.log(chosenWordHidden);
 
 // ___________________________________POSSIBLE FUNCITONS??
 
@@ -104,7 +120,7 @@ function lostGame() {
 }
 
 function wonGame() {
-    if (guessesRemaining > 0 || chosenWordHidden === characters) {
+    if (guessesRemaining > 0 || chosenWordHidden === char) {
         wins++;
         setup();
     }
@@ -118,7 +134,8 @@ function updateScreen() {
     document.getElementById("numWins").innerHTML = wins;
     document.getElementById("numLosses").innerHTML = losses;
     document.getElementById("numLives").innerHTML = guessesRemaining;
-    document.getElementById("chosenWordHidden").innerHTML = chosenWordHidden.join(" "); //this line will not work for some reason
+    // document.getElementById("chosenWordHidden").innerHTML = chosenWordHidden.join(" "); //this line will not work for some reason
+    document.getElementById("chosenWord").innerHTML = chosenWordHidden;
 }
 
 
