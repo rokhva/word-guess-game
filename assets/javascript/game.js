@@ -32,9 +32,6 @@ var chosenWordHidden = [];
 var char = [];
 var storeCorrectGuess =[];
 
-// var correctGuess = ;
-
-// var guesses = chosenWord.length + 5;
 
 // chooses a random word
 function setup() {
@@ -43,42 +40,41 @@ function setup() {
     char = chosenWord.split("");
     console.log(char);
 
-
+    //puts the correct number of underscores for each letter of the randomly chosen word
     for (var i = 0; i < char.length; i++) {
-        // chosenWordHidden[i] = "_";
         chosenWordHidden.push("_");
     }
+    //shows the hidden word in the console so you can cheat :)
     console.log(chosenWordHidden);
 
     //sets guesses and guessed letters to 0
     guessedLetters = [];
     guessesRemaining = 10;
 
-
-    //show on screen
-    // updateScreen();
-
 };
 
-//to keep track of how many letters are left to be guessed
-// var remainingLetters = chosenWord.length;
 
 setup();
 
 //track the keys the user presses
 document.onkeyup = function (event) { 
+
+//restricts the keys recorded to letters only
 if (event.keyCode > 64 && event.keyCode < 91){
     
+    //sets the user guess equal to the key pressed
     var userGuess = event.key;
         console.log(userGuess);
-    
+
+        //calls the check letter function with the userGuess as it's parameter
         checkLetter(userGuess);
 }
 }
 
 //will run everytime the user hits a key
-
 function checkLetter(userGuess) {
+
+    //if this variable reamins false the number guesses will subtract by 1
     var matchingLetter = false;
     
     //checking to see if the letter hit is within the randomly chosen word
@@ -106,6 +102,7 @@ function checkLetter(userGuess) {
     // empties out the stored guesses so the index numbers match the second time around
     storeCorrectGuess = []; 
 
+    //detracts from guesses remainging for each wrong guess, and starts the game over if guesses are less than 1
  if (matchingLetter === false) {
     guessesRemaining--;
     if (guessesRemaining < 1) {
@@ -113,63 +110,22 @@ function checkLetter(userGuess) {
     setup();
     }
  }
+ // checks to see if the chosen hidden word array includes any -'s each time a key is pressed. 
   var didIWin =  chosenWordHidden.includes("_");
   console.log(didIWin);
+  
+  //when didIWin is false, then the won game function will rum.
   if (didIWin !== true){
     wonGame();
     setup();
   }
+ //updates all the HTML elements 
  updateScreen();
  
 }
 
 console.log(chosenWordHidden);
 
-
-
-
-
-// function checkLetter(userGuess) {
-
-//     //checking to see if the letter hit is within the randomly chosen word
-//     if (userGuess) {
-//         for (var j = 0; j < char.length; j++) {
-
-//             if (char[j] === userGuess) {
-//                 //the letter will show up in it's correct postion in the chosenHiddenWord array
-//                 var letterReplace = userGuess;
-          
-//                 chosenWordHidden.splice( j, 1, letterReplace);
-//                 console.log(chosenWordHidden);
-                
-//                 // chosenWordHidden
-//                 // chosenWordHidden.splice();
-                
-                
-//                 //this will update the screen with the correct letters and score
-//                 updateScreen();
-
-//                 //if the letter guessed is not in the word, then the letter will be displayed under guesses, and the guesses remaining will decrease by one
-//             } else {
-//                 console.log('the letter does NOT match');
-//                 // guessedLetters.push(userGuess);
-//             }
-//         }
-//     }
-
-//     subtractLife( userGuess !== char[j]);
-// }
-
-// console.log(chosenWordHidden);
-
-// ___________________________________POSSIBLE FUNCITONS??
-
-
-
-
-// function subtractLife () {
-//     guessesRemaining--;
-// }
 
 function lostGame() {
     if (guessesRemaining < 1) {
@@ -186,8 +142,9 @@ function wonGame() {
         clear();
 }
 
+//sets all the values except wins and losses to thier beginning states
 function clear (){
-guessedLetters = [];
+ guessedLetters = [];
  chosenWord = "";
  guessesRemaining = 0;
  chosenWordHidden = [];
@@ -196,14 +153,11 @@ guessedLetters = [];
 }
 
 
-
-
 // Function to update the HTML on the page
 function updateScreen() {
     document.getElementById("numWins").innerHTML = wins;
     document.getElementById("numLosses").innerHTML = losses;
     document.getElementById("numLives").innerHTML = guessesRemaining;
-    // document.getElementById("chosenWordHidden").innerHTML = chosenWordHidden.join(" "); //this line will not work for some reason
     document.getElementById("chosenWord").innerHTML = chosenWordHidden.join(" ");
     document.getElementById("guessedLetters").innerHTML = guessedLetters.join(" ");
 }
