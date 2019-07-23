@@ -6,7 +6,7 @@
 
 .title{
     font-family: 'Railway', sans-serif;
-    font-weight: bolder;
+    font-weight: lighter;
     text-align: center;
     padding-top: 64px;
     padding-bottom: 64px;
@@ -22,7 +22,7 @@ h2{
     text-transform: uppercase;
     letter-spacing: 2pt;
     border-bottom: 5px solid black;
-    padding-bottom: 7px;
+    padding-bottom: 12px;
 }
 
 .container{
