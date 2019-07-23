@@ -115,6 +115,10 @@ function checkLetter(userGuess) {
  }
   var didIWin =  chosenWordHidden.includes("_");
   console.log(didIWin);
+  if (didIWin !== true){
+    wonGame();
+    setup();
+  }
  updateScreen();
  
 }
@@ -178,9 +182,8 @@ function lostGame() {
 }
 
 function wonGame() {
-    if (chosenWordHidden === char) {
         wins++;
-    }
+        clear();
 }
 
 function clear (){
