@@ -2,13 +2,7 @@
 
 ******* version 1.0.0 *******
 
-Basically a Tea-centered hangman game
-
-Users can use any key to start the game, and to guess the letters within the randomly chosen word.
-If the word is guessed correctly before the number of 'Lives Remaining" reaches 0 then the user wins the round.
-If the word is not completely and correctly guessed before the number of 'Remaining Lives' reaches 0 then the users looses that round.
-
-#1. Clearly states the problem the app is trying to solve
+#1. The problem the app is trying to solve
 This app allows the user to play a tea themed version of hang man. The user has a limited amount of guesses, the object of the game is to correctly guess the word before the number of guesses reaches zero.
 
 
